@@ -3,7 +3,9 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
+use App\Entity\Album;
 use App\Entity\Artiste;
+use App\Entity\Morceau;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
