@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ArtisteController extends AbstractController
 {
     /**
-     * @Route("/artistes", name="app_artistes", methodes={"GET"})
+     * @Route("/artistes", name="artistes", methods={"GET"})
      */
     public function listeArtistes(ArtisteRepository $repo)
     {
