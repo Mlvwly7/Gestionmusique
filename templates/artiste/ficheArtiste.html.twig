@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche artiste{% endblock %}
+
+{% block body %}
+        <h1 class="pt-2 text-center">Fiche de l'artiste</h1>
+        <hr>
+        <div class="row pt-2">
+            {% set nbAlbums = leArtiste.albums|length %}
+                <div class="card mb-3">
+                    <h3 class="card-header"> <a href="{{path('ficheArtiste', {'id': leArtiste.id})}} ">{{leArtiste.nom}}</h3>
+                    <div class="row">
+                        <div class="col-3 d-flex align-item-center mx-auto"></div>
+                            <img class="avatar mx-auto d-block " style ="height: auto; width: 200px; display: block; " src="{{leArtiste.image}}" >
+                        </div>
+                        <div class="col"></div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <span class="badge badge-success">
+                                {% if nbAlbums> 1 %} album {% else %} album
+                                {% endif %}
+                                {{nbAlbums}}</h5>
+                                </span>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"> {{leArtiste.description|raw}}... </p> Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"> {% if leArtiste.type == 0%} Artiste solo {% else %} Groupe {% endif %}</li>
+                            <li class="list-group-item"> <a href="{{ leArtiste.site}}">son site web </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
+                    </div>
+                </div>
+        </div>
+
+<table class="table table-hover mx-auto">
+  <thead>
+    <tr>
+      <th scope="col-3">Photo</th>
+      <th scope="col-4">Nom</th>
+      <th scope="col-1">Date</th>
+      <th scope="col-3">Styles</th>
+      <th scope="col-1">Morceaux</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for leAlbum in leArtiste.albums %}
+    <tr>
+      <td> <img src="miniature" "{{leAlbum.image}} " alt=""></td>
+      <td scope="row"> {{leAlbum.nom}} </td>
+      <td>{{leAlbum.date}}</td>
+      <td></td>
+      <td>{{leAlbum.morceaux|length}}</td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+{% endblock %}

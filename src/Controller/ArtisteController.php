@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Artiste;
 use App\Repository\ArtisteRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,4 +20,15 @@ class ArtisteController extends AbstractController
             'lesArtistes' => $artistes
         ]);
     }
+
+        /**
+     * @Route("/artiste/{id}", name="ficheArtiste", methods={"GET"})
+     */
+    public function ficheArtiste(Artiste $artiste)
+    {
+        return $this->render('artiste/ficheArtiste.html.twig', [
+            'leArtiste' => $artiste
+        ]);
+    }
+
 }
